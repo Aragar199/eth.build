@@ -7,7 +7,6 @@ import './App.css';
 import LiteGraphJS from 'litegraph.js/build/litegraph.js'
 import 'litegraph.js/css/litegraph.css'
 import CustomNodes from './CustomNodes'
-import ICON from './icon.png'
 import StackGrid from "react-stack-grid";
 
 import QrReader from "react-qr-reader";
@@ -25,7 +24,6 @@ import LoadDialog from "./dialogs/LoadDialog";
 import html2canvas from 'html2canvas';
 
 var codec = require('json-url')('lzw');
-var QRCode = require('qrcode.react')
 const axios = require('axios');
 
 
@@ -62,7 +60,7 @@ const touchHandler = (event)=>{
     switch(event.type)
     {
         case "touchstart": type = "mousedown"; break;
-        case "touchmove":  type = "mousemove"; if(global.showLibrary==true){}else{event.preventDefault()};break;
+        case "touchmove":  type = "mousemove"; if(global.showLibrary===true){}else{event.preventDefault()};break;
         case "touchend":   type = "mouseup";   break;
         default:           return;
     }
@@ -137,8 +135,8 @@ function App() {
   }
 
   let showLibrary = localStorage.getItem("eth.build.showLibrary");
-  if(showLibrary=="true") showLibrary=true
-  else if(showLibrary=="false") showLibrary=false
+  if(showLibrary==="true") showLibrary=true
+  else if(showLibrary==="false") showLibrary=false
   //console.log("showLibrary",showLibrary)
   const [showVideoLibrary, setShowVideoLibrary] = React.useState(showLibrary);
   global.showLibrary=showLibrary
@@ -161,7 +159,7 @@ function App() {
     document.onkeydown = (keydown)=>{
 
       //console.log("EVENT")
-      if(keydown.key=="Escape"){
+      if(keydown.key==="Escape"){
         setMenu("")
         setDrawing("")
         global.graph.canvas.drawing = false
@@ -193,7 +191,7 @@ function App() {
         <Divider/>
         <CardActions style={{justifyContent: 'center'}}>
           <div style={{padding:"2%"}}>
-            <a target="_blank" href="https://eth.build">Eth.Build</a> (<a target="_blank" href="https://github.com/austintgriffith/eth.build">source</a>) created by <a target="_blank" href="https://twitter.com/austingriffith">Austin Griffith</a>
+            <a target="_blank" href="https://eth.build" rel="noopener">Eth.Build</a> (<a target="_blank" href="https://github.com/austintgriffith/eth.build" rel="noopener">source</a>) created by <a target="_blank" href="https://twitter.com/austingriffith" rel="noopener">Austin Griffith</a>
           </div>
         </CardActions>
         <CardActions style={{justifyContent: 'center'}}>
